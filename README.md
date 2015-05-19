@@ -1,5 +1,7 @@
 # Google Analytics Dashboard
 
+![screenshot](https://cloud.githubusercontent.com/assets/80459/7712656/31a38222-fe38-11e4-998b-8d5d9a5c6956.png)
+
 This is a [Dashing](http://shopify.github.io/dashing) project that has been customized to add a Google Analytics view. It also has some other visual tweaks to bring Dashing up to speed.
 
 This project is heavily based on the work [@mtowers](https://github.com/mtowers) did for [his visitor count widget](https://gist.github.com/mtowers/5986576).
