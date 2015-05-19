@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Google Analytics Dashboard by raventools</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Google Analytics Dashboard</h1>
+        <h2>Dashing Dashboard for Google Analytics</h2>
+        <a href="https://github.com/raventools/dashing-google-analytics" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p><img src="https://cloud.githubusercontent.com/assets/80459/7712656/31a38222-fe38-11e4-998b-8d5d9a5c6956.png" alt="screenshot"></p>
+
+<p>This is a <a href="http://shopify.github.io/dashing">Dashing</a> project that has been customized to add a Google Analytics view. It also has some other visual tweaks to bring Dashing up to speed.</p>
+
+<p>This project is heavily based on the work <a href="https://github.com/mtowers">@mtowers</a> did for <a href="https://gist.github.com/mtowers/5986576">his visitor count widget</a>.</p>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Configurable to show relevant goals that are set up in Google Analytics</li>
+<li>Single-color (black) for all Dashboard widgets (This can be customized in the Widget SCSS)</li>
+<li>Already set up to go on a wide-screen television</li>
+<li>Configured with <a href="https://github.com/vrish88/sinatra_cyclist">Sinatra Cyclist</a> to rotate through multiple dashboards</li>
+<li>Uses the latest FontAwesome icons from the CDN</li>
+<li>Fixes an annoying icon positioning issue on most default Dashing installs</li>
+</ul>
+
+<h3>
+<a id="set-up-instructions" class="anchor" href="#set-up-instructions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set Up Instructions</h3>
+
+<p>This project has three environment variables you must set. </p>
+
+<ul>
+<li><code>GOOGLE_SERVICE_ACCOUNT_EMAIL</code></li>
+<li><code>GOOGLE_PRIVATE_KEY</code></li>
+<li><code>GOOGLE_PRIVATE_KEY_SECRET</code></li>
+<li><code>GOOGLE_ANALYTICS_VIEW_ID</code></li>
+</ul>
+
+<p>Obtaining them can be a bit of a chore, particularly if you want to deploy to Heroku and are setting up the project so that <em>no private credentials are exposed on GitHub</em>. Be careful with this one.</p>
+
+<p>These instructions are lifted almost entirely from the original widget.</p>
+
+<h4>
+<a id="1-create-and-download-a-new-private-key-for-google-api-access" class="anchor" href="#1-create-and-download-a-new-private-key-for-google-api-access" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Create and download a new private key for Google API access</h4>
+
+<ol>
+<li> Go to <a href="https://code.google.com/apis/console">https://code.google.com/apis/console</a>
+</li>
+<li> Click 'Create Project'</li>
+<li> Enable 'Analytics API' service and accept both Terms of Services</li>
+<li> Click 'API Access' in the left-hand navigation menu</li>
+<li> Click 'Create an OAuth 2.0 Client ID'</li>
+<li> Enter a product name (e.g. 'Dashing Widget') - logo and url are optional</li>
+<li> Click 'Next'</li>
+<li> Under Application Type, select 'Service Account' (Important step -- other account types will not work.)</li>
+<li> Click 'Create Client ID'</li>
+<li> Click 'Download private key' <em>NOTE: This will be your only opportunity to download this key.</em>
+</li>
+<li> Note the password for your new private key, usually 'notasecret'. This will be the value for <code>GOOGLE_PRIVATE_KEY_SECRET</code>
+</li>
+<li> Close the download key dialog</li>
+<li> Find the details for the service account you just created and copy it's email address which will look something like this: <code>210987654321-3rmagherd99kitt3h5@developer.gserviceaccount.com</code>. This will be the value for <code>GOOGLE_SERVICE_ACCOUNT_EMAIL</code>
+</li>
+</ol>
+
+<h4>
+<a id="2-attach-your-google-api-service-account-to-your-google-analytics-profile" class="anchor" href="#2-attach-your-google-api-service-account-to-your-google-analytics-profile" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Attach your Google API service account to your Google Analytics profile</h4>
+
+<p><em>Note: you will need to be an administrator of the Google Analytics profile</em></p>
+
+<ol>
+<li>Log in to your Google Analytics account: <a href="http://www.google.com/analytics/">http://www.google.com/analytics/</a>
+</li>
+<li>Click 'Admin' in the upper-right corner</li>
+<li>Select the account containing the profile you wish to use</li>
+<li>Select the property containing the profile you wish to use</li>
+<li>Select the profile you wish to use</li>
+<li>Click the 'Users' tab</li>
+<li>Click '+ New User'</li>
+<li>Enter the email address you copied from step 13 above</li>
+<li>Click 'Add User'</li>
+</ol>
+
+<h4>
+<a id="3-locate-the-id-for-your-google-analytics-data-view" class="anchor" href="#3-locate-the-id-for-your-google-analytics-data-view" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Locate the ID for your Google Analytics data view</h4>
+
+<ol>
+<li>On your Google Analytics Admin section, click the 'View Settings' panel (Such as "All Data")</li>
+<li>Copy your View ID  (e.g. 654321). This is the value for <code>GOOGLE_ANALYTICS_VIEW_ID</code>.</li>
+</ol>
+
+<h4>
+<a id="4-convert-your-certificate-to-an-ascii-string" class="anchor" href="#4-convert-your-certificate-to-an-ascii-string" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Convert your Certificate to an ASCII string</h4>
+
+<p>This is a variation from the original widget, and it is mainly so you do not store the certificate with the repository (and put it in an environment variable with other configuration credentials.) From the command line, run this to unlock the certificate.</p>
+
+<div class="highlight highlight-bash"><pre>$ openssl pkcs12 -info -nodes -<span class="pl-k">in</span> YourApp-a0b2c2d3456.p12 <span class="pl-k">&gt;</span> output.txt</pre></div>
+
+<p>When prompted for the password, it should be <code>notasecret</code>.</p>
+
+<p>The contents of <code>output.txt</code> can now be stored as the value for <code>GOOGLE_PRIVATE_KEY</code>.</p>
+
+<ol>
+<li>Open the file in a text editor</li>
+<li>Replace every line break with a <code>\n</code> so that it all fits on one line</li>
+<li>Put quote marks around it.</li>
+<li>In Heroku or other configuration management (locally, <code>.env</code>), set this string as the value of <code>GOOGLE_PRIVATE_KEY</code> (e.g. <code>export GOOGLE_PRIVATE_KEY="Bag Attributes\n    friendlyName: privatekey\n    localKeyID:...</code>)</li>
+</ol>
+
+<h2>
+<a id="starting-the-dashboard" class="anchor" href="#starting-the-dashboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Starting the Dashboard</h2>
+
+<p>You should be ready to run the Dashing dashboard as usual:</p>
+
+<pre><code>$ dashing start
+</code></pre>
+
+<p>Navigate to <a href="http://0.0.0.0:3030/_cycle">http://0.0.0.0:3030/_cycle</a> to see everything in action.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/raventools/dashing-google-analytics/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/raventools/dashing-google-analytics/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/raventools/dashing-google-analytics"></a> is maintained by <a href="https://github.com/raventools">raventools</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
