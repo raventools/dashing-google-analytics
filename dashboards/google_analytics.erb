@@ -1,0 +1,56 @@
+<script type='text/javascript'>
+$(function() {
+  Dashing.widget_base_dimensions = [370, 340]
+  Dashing.numColumns = 5
+});
+</script>
+
+<% content_for :title do %>Google Analytics<% end %>
+
+<div class="gridster" data-grid-width="1824" data-grid-height="984">
+  <ul>
+
+    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+      <div data-view="Image" data-image="/google_analytics.svg" data-width="550"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> 
+        <div data-id="ga_sessions" data-view="Number" data-title="Total Sessions" data-moreinfo="Last 30 Days"></div>
+        <i class="fa fa-users icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> 
+        <div data-id="ga_new_sessions" data-view="Number" data-title="New Sessions" data-moreinfo="Last 30 Days"></div>
+        <i class="fa fa-user-plus icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="ga_goal_2_completions" data-view="Number" data-title="Total Signups" data-moreinfo="Last 30 Days"></div>
+      <i class="fa fa-trophy icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2"> 
+        <div data-id="ga_traffic_sources" data-view="List" data-title="Top 10 Traffic Sources" data-moreinfo="Last 30 Days"></div>
+      <i class="fa fa-pie-chart icon-background"></i>        
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="ga_session_chart" data-view="Graph" data-title="Yesterday's Sessions"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="ga_bounce_rate" data-view="Number" data-title="Bounce Rate" data-moreinfo="Last 30 Days"></div>
+      <i class="fa fa-futbol-o icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="3" data-sizey="1">
+      <div data-id="ga_goal_2_completions_chart" data-view="Graph" data-title="Yesterday's Signups"></div>
+    </li>
+
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+      <div data-id="ga_goal_2_conversion_rate" data-view="Number" data-title="Signup Conversion Rate" data-moreinfo="Last 30 Days"></div>
+      <i class="fa fa-flag icon-background"></i>
+    </li>
+
+  </ul>
+</div>

@@ -1,0 +1,8 @@
+.bundle
+.env
+.ruby-version
+history.yml
+vendor/*
+*DS_STORE
+tmp/*
+log/*
