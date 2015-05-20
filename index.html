@@ -138,6 +138,107 @@
 </code></pre>
 
 <p>Navigate to <a href="http://0.0.0.0:3030/_cycle">http://0.0.0.0:3030/_cycle</a> to see everything in action.</p>
+
+<h2>
+<a id="customizing-your-dashboard" class="anchor" href="#customizing-your-dashboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customizing Your Dashboard</h2>
+
+<p>The general idea of a Dashing dashboard is that a ruby file in the <code>./jobs</code> folder runs at a defined interval and publishes through the <code>send_event()</code> method. Each "event" is represented by a unique string, meaning that no two events can have the same name. On the other end, an ERB file in the <code>./dashboards</code> folder receives the event data.</p>
+
+<p>In this example, a 1 by 1 unit widget receives the event <code>ga_sessions</code>, as defined in <code>data-id</code>. The <code>data-view</code> parameter tells the browser to use the <code>Number</code> widget, and the <code>data-title</code> and <code>data-moreinfo</code> attributes contain some useful data that is shown with the data. Each type of widget has a different set of data that it is designed to accommodate.</p>
+
+<p>The <code>&lt;i&gt;</code> tag tells the widget what icon to show faded in the background. For this dashboard, all of the possible icons can be found at <a href="https://fontawesome.io">FontAwesome</a>.</p>
+
+<pre><code>    &lt;li data-row="1" data-col="1" data-sizex="1" data-sizey="1"&gt; 
+        &lt;div data-id="ga_sessions" data-view="Number" data-title="Total Sessions" data-moreinfo="Last 30 Days"&gt;&lt;/div&gt;
+        &lt;i class="fa fa-users icon-background"&gt;&lt;/i&gt;
+    &lt;/li&gt;
+</code></pre>
+
+<h3>
+<a id="events-list" class="anchor" href="#events-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events List</h3>
+
+<h4>
+<a id="number" class="anchor" href="#number" aria-hidden="true"><span class="octicon octicon-link"></span></a>Number</h4>
+
+<ul>
+<li><code>ga_sessions</code></li>
+<li><code>ga_new_sessions</code></li>
+<li><code>ga_bounce_rate</code></li>
+<li><code>ga_goal_1_completions</code></li>
+<li><code>ga_goal_2_completions</code></li>
+<li><code>ga_goal_3_completions</code></li>
+<li><code>ga_goal_4_completions</code></li>
+<li><code>ga_goal_5_completions</code></li>
+<li><code>ga_goal_6_completions</code></li>
+<li><code>ga_goal_7_completions</code></li>
+<li><code>ga_goal_8_completions</code></li>
+<li><code>ga_goal_9_completions</code></li>
+<li><code>ga_goal_10_completions</code></li>
+<li><code>ga_goal_11_completions</code></li>
+<li><code>ga_goal_12_completions</code></li>
+<li><code>ga_goal_13_completions</code></li>
+<li><code>ga_goal_14_completions</code></li>
+<li><code>ga_goal_15_completions</code></li>
+<li><code>ga_goal_16_completions</code></li>
+<li><code>ga_goal_17_completions</code></li>
+<li><code>ga_goal_18_completions</code></li>
+<li><code>ga_goal_19_completions</code></li>
+<li><code>ga_goal_20_completions</code></li>
+<li><code>ga_goal_1_conversion_rate</code></li>
+<li><code>ga_goal_2_conversion_rate</code></li>
+<li><code>ga_goal_3_conversion_rate</code></li>
+<li><code>ga_goal_4_conversion_rate</code></li>
+<li><code>ga_goal_5_conversion_rate</code></li>
+<li><code>ga_goal_6_conversion_rate</code></li>
+<li><code>ga_goal_7_conversion_rate</code></li>
+<li><code>ga_goal_8_conversion_rate</code></li>
+<li><code>ga_goal_9_conversion_rate</code></li>
+<li><code>ga_goal_10_conversion_rate</code></li>
+<li><code>ga_goal_11_conversion_rate</code></li>
+<li><code>ga_goal_12_conversion_rate</code></li>
+<li><code>ga_goal_13_conversion_rate</code></li>
+<li><code>ga_goal_14_conversion_rate</code></li>
+<li><code>ga_goal_15_conversion_rate</code></li>
+<li><code>ga_goal_16_conversion_rate</code></li>
+<li><code>ga_goal_17_conversion_rate</code></li>
+<li><code>ga_goal_18_conversion_rate</code></li>
+<li><code>ga_goal_19_conversion_rate</code></li>
+<li><code>ga_goal_20_conversion_rate</code></li>
+</ul>
+
+<h4>
+<a id="graph" class="anchor" href="#graph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Graph</h4>
+
+<ul>
+<li><code>ga_session_chart</code></li>
+<li><code>ga_goal_1_completions_chart</code></li>
+<li><code>ga_goal_2_completions_chart</code></li>
+<li><code>ga_goal_3_completions_chart</code></li>
+<li><code>ga_goal_4_completions_chart</code></li>
+<li><code>ga_goal_5_completions_chart</code></li>
+<li><code>ga_goal_6_completions_chart</code></li>
+<li><code>ga_goal_7_completions_chart</code></li>
+<li><code>ga_goal_8_completions_chart</code></li>
+<li><code>ga_goal_9_completions_chart</code></li>
+<li><code>ga_goal_10_completions_chart</code></li>
+<li><code>ga_goal_11_completions_chart</code></li>
+<li><code>ga_goal_12_completions_chart</code></li>
+<li><code>ga_goal_13_completions_chart</code></li>
+<li><code>ga_goal_14_completions_chart</code></li>
+<li><code>ga_goal_15_completions_chart</code></li>
+<li><code>ga_goal_16_completions_chart</code></li>
+<li><code>ga_goal_17_completions_chart</code></li>
+<li><code>ga_goal_18_completions_chart</code></li>
+<li><code>ga_goal_19_completions_chart</code></li>
+<li><code>ga_goal_20_completions_chart</code></li>
+</ul>
+
+<h4>
+<a id="list" class="anchor" href="#list" aria-hidden="true"><span class="octicon octicon-link"></span></a>List</h4>
+
+<ul>
+<li><code>ga_traffic_sources</code></li>
+</ul>
         </section>
 
         <aside id="sidebar">
