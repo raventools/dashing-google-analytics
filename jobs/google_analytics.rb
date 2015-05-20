@@ -113,8 +113,9 @@ SCHEDULER.every '60m', first_in: 0 do
     suffix: '%'
   )
 
-  # Goal Completions
+  # Goals
   (1..20).each do |goal_id|
+    # Completions
     goal_completions = client.execute(
       api_method: analytics.data.ga.get, parameters: {
         'ids' => 'ga:' + view_id,
@@ -128,6 +129,7 @@ SCHEDULER.every '60m', first_in: 0 do
       current: goal_completions.data.rows.count > 0 ? goal_completions.data.rows[0][0] : 0
     )
 
+    # Conversion Rate
     goal_conversion_rate = client.execute(
       api_method: analytics.data.ga.get, parameters: {
         'ids' => 'ga:' + view_id,
@@ -142,6 +144,7 @@ SCHEDULER.every '60m', first_in: 0 do
       suffix: '%'
     )
 
+    # Completions by Date
     goal_completions_dates = client.execute(
       api_method: analytics.data.ga.get, parameters: {
         'ids' => 'ga:' + view_id,
@@ -151,7 +154,6 @@ SCHEDULER.every '60m', first_in: 0 do
         'dimensions' => 'ga:date'
       }
     )
-    # Reformat for Chart: Goal Conversions by Date
     goal_completions_plot = []
     index = 0
     goal_completions_dates.data.rows.each do |row|
@@ -176,7 +178,6 @@ SCHEDULER.every '60m', first_in: 0 do
       'dimensions' => 'ga:date'
     }
   )
-  # Reformat for Chart: Sessions by Date
   sessions_dates_plot = []
   index = 0
   sessions_dates.data.rows.each do |row|
