@@ -32,7 +32,6 @@ end
 
 # Start the scheduler
 SCHEDULER.every '60m', first_in: 0 do
-
   # Request a token for our service account
   client.authorization.fetch_access_token!
 
@@ -165,7 +164,6 @@ SCHEDULER.every '60m', first_in: 0 do
       points: goal_completions_dates.data.rows.count > 0 ? goal_completions_plot : [],
       moreinfo: "Chart: #{start_date_display} - #{end_date_display}"
     )
-
   end
 
   # Sessions by Date
@@ -189,5 +187,4 @@ SCHEDULER.every '60m', first_in: 0 do
     points: sessions_dates.data.rows.count > 0 ? sessions_dates_plot : [],
     moreinfo: "Chart: #{start_date_display} - #{end_date_display}"
   )
-
 end

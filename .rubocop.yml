@@ -1,0 +1,14 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - '.bundle/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'vendor/**/*'
