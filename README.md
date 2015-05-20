@@ -89,3 +89,95 @@ $ dashing start
 ```
 
 Navigate to http://0.0.0.0:3030/_cycle to see everything in action.
+
+## Customizing Your Dashboard
+
+The general idea of a Dashing dashboard is that a ruby file in the `./jobs` folder runs at a defined interval and publishes through the `send_event()` method. Each "event" is represented by a unique string, meaning that no two events can have the same name. On the other end, an ERB file in the `./dashboards` folder receives the event data.
+
+In this example, a 1 by 1 unit widget receives the event `ga_sessions`, as defined in `data-id`. The `data-view` parameter tells the browser to use the `Number` widget, and the `data-title` and `data-moreinfo` attributes contain some useful data that is shown with the data. Each type of widget has a different set of data that it is designed to accommodate.
+
+The `<i>` tag tells the widget what icon to show faded in the background. For this dashboard, all of the possible icons can be found at [FontAwesome](https://fontawesome.io).
+
+```
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> 
+        <div data-id="ga_sessions" data-view="Number" data-title="Total Sessions" data-moreinfo="Last 30 Days"></div>
+        <i class="fa fa-users icon-background"></i>
+    </li>
+```
+
+### Events List
+
+#### Number
+
+- `ga_sessions`
+- `ga_new_sessions`
+- `ga_bounce_rate`
+- `ga_goal_1_completions`
+- `ga_goal_2_completions`
+- `ga_goal_3_completions`
+- `ga_goal_4_completions`
+- `ga_goal_5_completions`
+- `ga_goal_6_completions`
+- `ga_goal_7_completions`
+- `ga_goal_8_completions`
+- `ga_goal_9_completions`
+- `ga_goal_10_completions`
+- `ga_goal_11_completions`
+- `ga_goal_12_completions`
+- `ga_goal_13_completions`
+- `ga_goal_14_completions`
+- `ga_goal_15_completions`
+- `ga_goal_16_completions`
+- `ga_goal_17_completions`
+- `ga_goal_18_completions`
+- `ga_goal_19_completions`
+- `ga_goal_20_completions`
+- `ga_goal_1_conversion_rate`
+- `ga_goal_2_conversion_rate`
+- `ga_goal_3_conversion_rate`
+- `ga_goal_4_conversion_rate`
+- `ga_goal_5_conversion_rate`
+- `ga_goal_6_conversion_rate`
+- `ga_goal_7_conversion_rate`
+- `ga_goal_8_conversion_rate`
+- `ga_goal_9_conversion_rate`
+- `ga_goal_10_conversion_rate`
+- `ga_goal_11_conversion_rate`
+- `ga_goal_12_conversion_rate`
+- `ga_goal_13_conversion_rate`
+- `ga_goal_14_conversion_rate`
+- `ga_goal_15_conversion_rate`
+- `ga_goal_16_conversion_rate`
+- `ga_goal_17_conversion_rate`
+- `ga_goal_18_conversion_rate`
+- `ga_goal_19_conversion_rate`
+- `ga_goal_20_conversion_rate`
+
+#### Graph
+
+- `ga_session_chart`
+- `ga_goal_1_completions_chart`
+- `ga_goal_2_completions_chart`
+- `ga_goal_3_completions_chart`
+- `ga_goal_4_completions_chart`
+- `ga_goal_5_completions_chart`
+- `ga_goal_6_completions_chart`
+- `ga_goal_7_completions_chart`
+- `ga_goal_8_completions_chart`
+- `ga_goal_9_completions_chart`
+- `ga_goal_10_completions_chart`
+- `ga_goal_11_completions_chart`
+- `ga_goal_12_completions_chart`
+- `ga_goal_13_completions_chart`
+- `ga_goal_14_completions_chart`
+- `ga_goal_15_completions_chart`
+- `ga_goal_16_completions_chart`
+- `ga_goal_17_completions_chart`
+- `ga_goal_18_completions_chart`
+- `ga_goal_19_completions_chart`
+- `ga_goal_20_completions_chart`
+
+#### List
+
+- `ga_traffic_sources`
+
